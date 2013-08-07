@@ -159,7 +159,7 @@ function create_dictionary(&$pdo, $number_letters){
 	// this binds the variables by reference so you can re-use the prepared statement
 	$stmt->bindParam(':value', $value);
 	//read the dictonary
-	$file_handle = fopen('./en_US.dic', "r");
+	$file_handle = fopen('./dictionary/en_US.dic', "r");
 	while (!feof($file_handle)) {
 	   $line = fgets($file_handle);
 	   $remove_at = strpos($line, "/");
