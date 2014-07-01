@@ -19,7 +19,7 @@ $update_dictionary = $_GET['update'];
 $all_words = array();
 
 //filename of Dictionary
-$file = "dict-" . $num_letters . "-value.sqlite";
+$file = "dict-" . $num_letters . ".sqlite";
 
 //Load and or Update the dictionary
 if(file_exists($file) && $update_dictionary){
@@ -30,9 +30,8 @@ if(file_exists($file) && $update_dictionary){
 	$pdo = new PDO('sqlite:'.dirname(__FILE__).'/'.$file);
 	create_dictionary($pdo, $num_letters);
 } else{
-		$pdo = new PDO('sqlite:'.dirname(__FILE__).'/'.$file);
+	$pdo = new PDO('sqlite:'.dirname(__FILE__).'/'.$file);
 }
-
 //get the potential words
 recurse($pdo, "", $letters_array);
 
@@ -81,7 +80,7 @@ function recurse(&$pdo, $word, $letters){
 	
 	//reset the indexes
 	$letters = array_values($letters);
-	
+
 	$count = count($letters);
 	for ($i = 0; $i < $count; $i++){
 		$new_word = $word . $letters[$i];
